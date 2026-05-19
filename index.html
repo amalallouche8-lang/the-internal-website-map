@@ -1,0 +1,516 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Internal — by Amallitaah</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:#0a1a0f;color:#e8dcc8;font-family:'Montserrat',sans-serif;overflow-x:hidden;}
+
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:28px 60px;border-bottom:0.5px solid rgba(201,169,110,0.2);position:sticky;top:0;z-index:100;background:#0a1a0f;}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;letter-spacing:8px;color:#c9a96e;text-transform:uppercase;}
+.nav-logo span{font-size:11px;letter-spacing:3px;color:#8a7a60;display:block;margin-top:2px;}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links li{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b8a88a;cursor:pointer;transition:color 0.3s;}
+.nav-links li:hover{color:#c9a96e;}
+.nav-cta{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a1a0f;background:#c9a96e;padding:12px 28px;cursor:pointer;transition:opacity 0.3s;}
+.nav-cta:hover{opacity:0.85;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:0 60px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,#1a3a1f 0%,#0a1a0f 60%);z-index:0;}
+.hero-orb{position:absolute;right:8%;top:50%;transform:translateY(-50%);width:420px;height:420px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#2d5a2e,#1a3a1f,#0a1a0f);border:0.5px solid rgba(201,169,110,0.25);z-index:1;display:flex;align-items:center;justify-content:center;}
+.hero-orb-inner{width:calc(100% - 40px);height:calc(100% - 40px);border-radius:50%;border:0.5px solid rgba(201,169,110,0.12);display:flex;align-items:center;justify-content:center;}
+.hero-orb-symbol{font-family:'Cormorant Garamond',serif;font-size:120px;color:rgba(201,169,110,0.12);font-style:italic;}
+.hero-content{position:relative;z-index:2;max-width:580px;}
+.eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:28px;display:flex;align-items:center;gap:12px;}
+.eyebrow::before{content:'';width:40px;height:0.5px;background:#c9a96e;display:block;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:88px;font-weight:300;line-height:0.95;color:#e8dcc8;margin-bottom:8px;}
+.hero-title em{font-style:italic;color:#c9a96e;}
+.hero-sub{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#8a7a60;margin:20px 0 40px;}
+.hero-desc{font-size:13px;line-height:2;color:#b8a88a;max-width:420px;margin-bottom:48px;font-weight:300;}
+.hero-btns{display:flex;gap:24px;align-items:center;}
+.btn-primary{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a1a0f;background:#c9a96e;padding:16px 36px;cursor:pointer;transition:opacity 0.3s;}
+.btn-primary:hover{opacity:0.85;}
+.btn-ghost{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;border-bottom:0.5px solid rgba(201,169,110,0.4);padding-bottom:4px;cursor:pointer;}
+.hero-scroll{position:absolute;bottom:40px;left:60px;z-index:2;display:flex;align-items:center;gap:12px;}
+.hero-scroll-line{width:60px;height:0.5px;background:rgba(201,169,110,0.4);}
+.hero-scroll-text{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#8a7a60;}
+
+/* MARQUEE */
+.marquee-wrap{background:#c9a96e;padding:14px 0;overflow:hidden;white-space:nowrap;}
+.marquee-track{display:inline-flex;animation:marquee 20s linear infinite;}
+.marquee-item{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#0a1a0f;padding:0 40px;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* SECTIONS */
+section{padding:100px 60px;border-bottom:0.5px solid rgba(201,169,110,0.1);}
+.section-tag{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.section-tag::before{content:'';width:30px;height:0.5px;background:#c9a96e;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:#e8dcc8;line-height:1.1;margin-bottom:32px;}
+.section-title em{color:#c9a96e;font-style:italic;}
+
+/* MANIFESTO */
+.manifesto-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.manifesto-body{font-size:13px;line-height:2;color:#b8a88a;font-weight:300;margin-bottom:20px;}
+.quote-card{background:#111f13;border:0.5px solid rgba(201,169,110,0.2);padding:48px;position:relative;}
+.quote-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:140px;color:rgba(201,169,110,0.07);position:absolute;top:-30px;left:28px;line-height:1;}
+.quote-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;line-height:1.7;color:#e8dcc8;font-weight:300;position:relative;z-index:1;}
+.quote-author{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;margin-top:28px;}
+
+/* PILLARS */
+.pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:60px;}
+.pillar-card{background:#111f13;padding:40px 32px;border:0.5px solid rgba(201,169,110,0.1);cursor:pointer;transition:background 0.3s;position:relative;}
+.pillar-card:hover{background:#162618;}
+.pillar-num{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:rgba(201,169,110,0.08);line-height:1;margin-bottom:20px;}
+.pillar-title{font-family:'Cormorant Garamond',serif;font-size:22px;color:#e8dcc8;margin-bottom:12px;}
+.pillar-body{font-size:12px;line-height:1.9;color:#8a7a60;font-weight:300;}
+.pillar-arrow{position:absolute;bottom:32px;right:32px;color:rgba(201,169,110,0.3);font-size:16px;}
+
+/* SHOP */
+.shop-subtitle{font-size:12px;color:#8a7a60;letter-spacing:2px;margin-bottom:60px;}
+.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.shop-card{background:#111f13;border:0.5px solid rgba(201,169,110,0.12);cursor:pointer;transition:border-color 0.3s;}
+.shop-card:hover{border-color:rgba(201,169,110,0.3);}
+.shop-img{aspect-ratio:3/4;background:#1a3a1f;display:flex;align-items:center;justify-content:center;position:relative;}
+.shop-img-symbol{font-family:'Cormorant Garamond',serif;font-size:64px;color:rgba(201,169,110,0.1);font-style:italic;}
+.shop-tag{position:absolute;top:16px;left:16px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#0a1a0f;background:#c9a96e;padding:6px 12px;}
+.shop-info{padding:24px;}
+.shop-cat{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#8a7a60;margin-bottom:8px;}
+.shop-name{font-family:'Cormorant Garamond',serif;font-size:19px;color:#e8dcc8;margin-bottom:12px;}
+.shop-link{font-size:11px;color:#c9a96e;letter-spacing:1px;}
+
+/* RECOMMENDATIONS */
+.recs{background:#080f08;}
+.recs-tabs{display:flex;border-bottom:0.5px solid rgba(201,169,110,0.15);margin-bottom:48px;margin-top:20px;}
+.rec-tab{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8a7a60;padding:14px 28px;cursor:pointer;border-bottom:1.5px solid transparent;margin-bottom:-0.5px;transition:color 0.3s;}
+.rec-tab.active,.rec-tab:hover{color:#c9a96e;border-bottom-color:#c9a96e;}
+.recs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.rec-card{background:#111f13;padding:32px;border:0.5px solid rgba(201,169,110,0.08);}
+.rec-type{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;margin-bottom:16px;}
+.rec-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:#e8dcc8;margin-bottom:10px;line-height:1.3;}
+.rec-by{font-size:11px;color:#8a7a60;margin-bottom:14px;}
+.rec-desc{font-size:12px;line-height:1.8;color:#6a5a48;font-weight:300;}
+.rec-placeholder{font-size:13px;line-height:1.9;color:#6a5a48;font-style:italic;font-family:'Cormorant Garamond',serif;}
+
+/* HOBBIES */
+.hobbies-sub{font-size:12px;color:#8a7a60;margin-bottom:60px;letter-spacing:1px;}
+.hobbies-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:2px;}
+.hobby-card{background:#111f13;border:0.5px solid rgba(201,169,110,0.1);padding:40px;position:relative;overflow:hidden;cursor:pointer;transition:background 0.3s;}
+.hobby-card:hover{background:#162618;}
+.hobby-card.large{grid-row:span 2;min-height:420px;}
+.hobby-bg{position:absolute;bottom:-20px;right:-10px;font-family:'Cormorant Garamond',serif;font-size:150px;color:rgba(201,169,110,0.04);font-style:italic;line-height:1;pointer-events:none;}
+.hobby-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;margin-bottom:16px;}
+.hobby-name{font-family:'Cormorant Garamond',serif;font-size:26px;color:#e8dcc8;font-weight:300;line-height:1.2;}
+.hobby-desc{font-size:12px;color:#8a7a60;line-height:1.9;margin-top:12px;font-weight:300;}
+
+/* NUTRITION */
+.nutrition{background:#080f08;}
+.nutrition-intro{font-size:13px;line-height:2;color:#b8a88a;font-weight:300;max-width:640px;margin-bottom:60px;}
+.phases-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.phase-card{background:#111f13;padding:36px 28px;border:0.5px solid rgba(201,169,110,0.08);}
+.phase-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:#e8dcc8;margin-bottom:6px;}
+.phase-days{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;margin-bottom:20px;}
+.phase-body{font-size:12px;line-height:1.9;color:#8a7a60;font-weight:300;}
+
+/* COMMUNITY */
+.community{text-align:center;background:#111f13;}
+.community-eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#c9a96e;margin-bottom:24px;}
+.community-title{font-family:'Cormorant Garamond',serif;font-size:62px;font-weight:300;color:#e8dcc8;line-height:1.1;margin-bottom:24px;}
+.community-title em{color:#c9a96e;font-style:italic;}
+.community-desc{font-size:13px;line-height:2;color:#b8a88a;max-width:540px;margin:0 auto 48px;font-weight:300;}
+.community-stats{display:flex;justify-content:center;gap:80px;margin-bottom:60px;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:#c9a96e;}
+.stat-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8a7a60;margin-top:4px;}
+
+/* CHAT */
+.chat-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.chat-body-text{font-size:13px;line-height:2;color:#b8a88a;font-weight:300;margin-bottom:32px;}
+.chat-box{background:#0d1a0e;border:0.5px solid rgba(201,169,110,0.15);overflow:hidden;}
+.chat-header{background:#111f13;padding:16px 24px;border-bottom:0.5px solid rgba(201,169,110,0.1);display:flex;align-items:center;gap:10px;}
+.chat-dot{width:8px;height:8px;border-radius:50%;background:#c9a96e;}
+.chat-name{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;}
+.chat-status{font-size:10px;color:#4a7a4a;margin-left:auto;}
+.chat-messages{padding:24px;display:flex;flex-direction:column;gap:16px;min-height:220px;}
+.msg{max-width:80%;padding:14px 18px;font-size:12px;line-height:1.7;font-weight:300;}
+.msg-them{background:#162618;border:0.5px solid rgba(201,169,110,0.08);color:#b8a88a;align-self:flex-start;}
+.msg-us{background:#1a3a1f;border:0.5px solid rgba(201,169,110,0.18);color:#e8dcc8;align-self:flex-end;}
+.msg-name{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#c9a96e;margin-bottom:6px;}
+.chat-input-wrap{padding:16px 24px;border-top:0.5px solid rgba(201,169,110,0.1);display:flex;gap:10px;}
+.chat-input{flex:1;background:#162618;border:0.5px solid rgba(201,169,110,0.15);padding:12px 16px;font-size:12px;color:#e8dcc8;font-family:'Montserrat',sans-serif;outline:none;}
+.chat-input::placeholder{color:#4a3a28;}
+.chat-send{background:#c9a96e;border:none;padding:12px 20px;color:#0a1a0f;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;}
+
+/* LOGO */
+.logo-section{display:flex;align-items:center;justify-content:center;padding:80px 60px;}
+
+/* FOOTER */
+footer{padding:60px 60px 0;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:60px;}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;letter-spacing:6px;color:#c9a96e;text-transform:uppercase;margin-bottom:6px;}
+.footer-brand-sub{font-size:10px;letter-spacing:2px;color:#6a5a48;margin-bottom:16px;}
+.footer-tagline{font-size:12px;color:#6a5a48;line-height:1.8;font-weight:300;}
+.footer-col-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;margin-bottom:20px;}
+.footer-link{display:block;font-size:12px;color:#6a5a48;margin-bottom:10px;cursor:pointer;transition:color 0.3s;text-decoration:none;}
+.footer-link:hover{color:#b8a88a;}
+.footer-bottom{padding:20px 0;border-top:0.5px solid rgba(201,169,110,0.08);display:flex;justify-content:space-between;}
+.footer-copy{font-size:10px;color:#4a3a28;letter-spacing:1px;}
+
+@media(max-width:768px){
+  nav{padding:20px 24px;}
+  .nav-links{display:none;}
+  .hero{padding:0 24px;min-height:100svh;}
+  .hero-title{font-size:52px;}
+  .hero-orb{display:none;}
+  section{padding:70px 24px;}
+  .manifesto-grid,.pillars-grid,.shop-grid,.recs-grid,.hobbies-grid,.phases-grid,.chat-grid,.footer-grid{grid-template-columns:1fr;}
+  .hobby-card.large{grid-row:span 1;}
+  .community-stats{gap:40px;}
+  .community-title{font-size:40px;}
+  footer{padding:60px 24px 0;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    The Internal
+    <span>by Amallitaah</span>
+  </div>
+  <ul class="nav-links">
+    <li>Manifesto</li>
+    <li>The Edit</li>
+    <li>Recommendations</li>
+    <li>Community</li>
+  </ul>
+  <div class="nav-cta">Enter</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0 60px;border:none;">
+  <div class="hero-bg"></div>
+  <div class="hero-orb"><div class="hero-orb-inner"><span class="hero-orb-symbol">∞</span></div></div>
+  <div class="hero-content">
+    <div class="eyebrow">Psychology & Elevation</div>
+    <h1 class="hero-title">The<br><em>Internal</em><br>World</h1>
+    <p class="hero-sub">Your highest self has been waiting.</p>
+    <p class="hero-desc">You've felt it for a while now. That there's more. That you are more. This is where you come to find out.</p>
+    <div class="hero-btns">
+      <div class="btn-primary">Enter the world</div>
+      <div class="btn-ghost">Explore the edit →</div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-text">Scroll to descend</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Psychology</span><span class="marquee-item">✦</span>
+    <span class="marquee-item">Dark Feminine</span><span class="marquee-item">✦</span>
+    <span class="marquee-item">Highest Self</span><span class="marquee-item">✦</span>
+    <span class="marquee-item">Inner World</span><span class="marquee-item">✦</span>
+    <span class="marquee-item">Self Mastery</span><span class="marquee-item">✦</span>
+    <span class="marquee-item">Elevation</span><span class="marquee-item">✦</span>
+    <span class="marquee-item">The Internal</span><span class="marquee-item">✦</span>
+    <span class="marquee-item">Psychology</span><span class="marquee-item">✦</span>
+    <span class="marquee-item">Dark Feminine</span><span class="marquee-item">✦</span>
+    <span class="marquee-item">Highest Self</span><span class="marquee-item">✦</span>
+    <span class="marquee-item">Inner World</span><span class="marquee-item">✦</span>
+    <span class="marquee-item">Self Mastery</span><span class="marquee-item">✦</span>
+    <span class="marquee-item">Elevation</span><span class="marquee-item">✦</span>
+    <span class="marquee-item">The Internal</span><span class="marquee-item">✦</span>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<section>
+  <div class="manifesto-grid">
+    <div>
+      <div class="section-tag">Who we are</div>
+      <h2 class="section-title">You were never meant<br>to stay <em>ordinary.</em></h2>
+      <p class="manifesto-body">The Internal was built for women who feel the pull toward something more — a deeper understanding of themselves, a life that reflects their inner world in its most elevated form.</p>
+      <p class="manifesto-body">I'm not a psychologist. I'm someone who learned everything by living, reading, falling and getting back up. And I share everything I know — honestly, warmly, and without a filter.</p>
+      <p class="manifesto-body">Here, psychology meets lifestyle. The inner work meets the outer world. You will be challenged. You will be seen.</p>
+    </div>
+    <div>
+      <div class="quote-card">
+        <p class="quote-text">"She is not becoming. She has always been. She is simply remembering."</p>
+        <p class="quote-author">— The Internal</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section>
+  <div class="section-tag">The four pillars</div>
+  <h2 class="section-title">What <em>lives</em> here</h2>
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <div class="pillar-num">01</div>
+      <p class="pillar-title">The Psychology</p>
+      <p class="pillar-body">Deep dives into your inner world — attachment theory, shadow work, archetypes, and the science of becoming. No academic jargon. Just honest and deep.</p>
+      <span class="pillar-arrow">→</span>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">02</div>
+      <p class="pillar-title">The Lifestyle</p>
+      <p class="pillar-body">What your highest self reads, wears, drinks, and surrounds herself with. Curated for the woman who sees luxury as an inside job.</p>
+      <span class="pillar-arrow">→</span>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">03</div>
+      <p class="pillar-title">The Practice</p>
+      <p class="pillar-body">Rituals, hobbies, and habits that align your outer world with your inner frequency. Start small. Go deep.</p>
+      <span class="pillar-arrow">→</span>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">04</div>
+      <p class="pillar-title">The Community</p>
+      <p class="pillar-body">A closed circle of women walking the same path. No noise. Just depth, support, and shared ascent.</p>
+      <span class="pillar-arrow">→</span>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section>
+  <div class="section-tag">The Edit</div>
+  <h2 class="section-title">What your <em>highest self</em> would buy</h2>
+  <p class="shop-subtitle">Curated. Intentional. Yours.</p>
+  <div class="shop-grid">
+    <div class="shop-card">
+      <div class="shop-img"><span class="shop-img-symbol">◈</span><div class="shop-tag">Rituals</div></div>
+      <div class="shop-info">
+        <p class="shop-cat">Morning practice</p>
+        <p class="shop-name">The Alignment Journal</p>
+        <p class="shop-link">→ View on Amazon</p>
+      </div>
+    </div>
+    <div class="shop-card">
+      <div class="shop-img"><span class="shop-img-symbol">◇</span><div class="shop-tag">Mind</div></div>
+      <div class="shop-info">
+        <p class="shop-cat">Psychology reads</p>
+        <p class="shop-name">Shadow & Soul Library</p>
+        <p class="shop-link">→ View on Amazon</p>
+      </div>
+    </div>
+    <div class="shop-card">
+      <div class="shop-img"><span class="shop-img-symbol">✦</span><div class="shop-tag">Space</div></div>
+      <div class="shop-info">
+        <p class="shop-cat">Your sanctuary</p>
+        <p class="shop-name">The Elevated Home Edit</p>
+        <p class="shop-link">→ View on Amazon</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section class="recs">
+  <div class="section-tag">Curated for you</div>
+  <h2 class="section-title">What your <em>highest self</em> consumes</h2>
+  <div class="recs-tabs">
+    <div class="rec-tab active">Podcasts</div>
+    <div class="rec-tab">Books</div>
+    <div class="rec-tab">Articles</div>
+    <div class="rec-tab">Follows</div>
+  </div>
+  <div class="recs-grid">
+    <div class="rec-card">
+      <p class="rec-type">◉ Coming soon</p>
+      <p class="rec-title">Podcast recommendations</p>
+      <p class="rec-placeholder">I'm still exploring. When something truly moves me, you'll find it here — with honesty, not hype.</p>
+    </div>
+    <div class="rec-card">
+      <p class="rec-type">◉ Coming soon</p>
+      <p class="rec-title">More on the way</p>
+      <p class="rec-placeholder">Only things I've genuinely lived with. Nothing curated for aesthetic — only for depth.</p>
+    </div>
+    <div class="rec-card">
+      <p class="rec-type">◉ Coming soon</p>
+      <p class="rec-title">Stay close</p>
+      <p class="rec-placeholder">Subscribe to the newsletter to be the first to know when new recommendations drop.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOBBIES -->
+<section>
+  <div class="section-tag">The Practice</div>
+  <h2 class="section-title">Your <em>highest self</em>'s hobbies</h2>
+  <p class="hobbies-sub">How you spend your time is who you become.</p>
+  <div class="hobbies-grid">
+    <div class="hobby-card large">
+      <div class="hobby-bg">◈</div>
+      <p class="hobby-tag">Mind + Body</p>
+      <p class="hobby-name">Movement &<br>Body Care</p>
+      <p class="hobby-desc">The practice of returning to your body as a home. Not for aesthetics — for presence, for strength, for the quiet knowing that you fully inhabit yourself. Whether that's lifting, walking, dancing, or stretching — move with intention.</p>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-bg">✦</div>
+      <p class="hobby-tag">Creativity</p>
+      <p class="hobby-name">Journaling & Inner Work</p>
+      <p class="hobby-desc">Your highest self writes. Every day. Even five minutes.</p>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-bg">◇</div>
+      <p class="hobby-tag">Knowledge</p>
+      <p class="hobby-name">Reading Deeply</p>
+      <p class="hobby-desc">Not scrolling. Reading. Long-form. Slowly.</p>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-bg">⬡</div>
+      <p class="hobby-tag">Solitude</p>
+      <p class="hobby-name">Solo Dining & Travel</p>
+      <p class="hobby-desc">The woman who is her own best company.</p>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-bg">◎</div>
+      <p class="hobby-tag">Art</p>
+      <p class="hobby-name">Museums & Cultural Depth</p>
+      <p class="hobby-desc">She collects experiences, not things.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NUTRITION -->
+<section class="nutrition">
+  <div class="section-tag">Nourish from within</div>
+  <h2 class="section-title">Eating for <em>who you are</em> this week</h2>
+  <p class="nutrition-intro">Your body is not the same every day of the month — and your food shouldn't be either. Hormonal nutrition isn't a diet. It's a conversation with your body. Learning to give yourself what you actually need, when you need it.</p>
+  <div class="phases-grid">
+    <div class="phase-card">
+      <p class="phase-name">Menstrual</p>
+      <p class="phase-days">Days 1–5</p>
+      <p class="phase-body">Rest. Restore. Iron-rich foods, warm meals, dark chocolate with intention. This is not the time to push — it's the time to replenish.</p>
+    </div>
+    <div class="phase-card">
+      <p class="phase-name">Follicular</p>
+      <p class="phase-days">Days 6–13</p>
+      <p class="phase-body">Energy rising. Lighter, fresher foods. Fermented foods, leafy greens, seeds. Start new things. Your mind is sharp.</p>
+    </div>
+    <div class="phase-card">
+      <p class="phase-name">Ovulatory</p>
+      <p class="phase-days">Days 14–17</p>
+      <p class="phase-body">Peak energy. Social, radiant, magnetic. Raw foods, fiber, and anti-inflammatory choices support this phase beautifully.</p>
+    </div>
+    <div class="phase-card">
+      <p class="phase-name">Luteal</p>
+      <p class="phase-days">Days 18–28</p>
+      <p class="phase-body">Slow down before you have to. Complex carbs, magnesium-rich foods, warmth. Honor this phase instead of fighting it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community">
+  <p class="community-eyebrow">You are not alone in this</p>
+  <h2 class="community-title">A closed circle of<br><em>elevated women</em></h2>
+  <p class="community-desc">The Internal community is for women who have stopped performing and started becoming. Real conversations. Real support. No noise. This is not just a group. These are your people.</p>
+  <div class="community-stats">
+    <div><p class="stat-num">211</p><p class="stat-label">Women inside</p></div>
+    <div><p class="stat-num">Daily</p><p class="stat-label">New content</p></div>
+    <div><p class="stat-num">∞</p><p class="stat-label">Depth</p></div>
+  </div>
+  <div class="btn-primary" style="display:inline-block;">Join the circle</div>
+</section>
+
+<!-- CHAT -->
+<section>
+  <div class="chat-grid">
+    <div>
+      <div class="section-tag">The Inner Circle</div>
+      <h2 class="section-title">Real conversations<br>with <em>real women</em></h2>
+      <p class="chat-body-text">This is not a comment section. This is a space where women come to think out loud, support each other, and build together — with depth and without judgment. What you share here, stays here. What you receive here, you carry with you.</p>
+      <div class="btn-primary" style="display:inline-block;">Join the chat</div>
+    </div>
+    <div class="chat-box">
+      <div class="chat-header">
+        <div class="chat-dot"></div>
+        <span class="chat-name">The Internal — Community</span>
+        <span class="chat-status">● Live</span>
+      </div>
+      <div class="chat-messages">
+        <div class="msg msg-them"><p class="msg-name">Sofia M.</p>The shadow work module completely changed how I see my patterns. Does anyone else recognize this?</div>
+        <div class="msg msg-us"><p class="msg-name">Yara K.</p>Yes — I cried three times. But I feel lighter than I have in years.</div>
+        <div class="msg msg-them"><p class="msg-name">Houda A.</p>This community is the only place online that actually feels safe.</div>
+      </div>
+      <div class="chat-input-wrap">
+        <input class="chat-input" type="text" placeholder="Speak your truth...">
+        <button class="chat-send">Send</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO -->
+<div class="logo-section">
+  <svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="140" cy="140" r="120" fill="none" stroke="#c9a96e" stroke-width="0.5"/>
+    <circle cx="140" cy="140" r="100" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="0.5"/>
+    <circle cx="140" cy="140" r="80" fill="none" stroke="rgba(201,169,110,0.12)" stroke-width="0.5"/>
+    <line x1="140" y1="20" x2="140" y2="260" stroke="rgba(201,169,110,0.12)" stroke-width="0.5"/>
+    <line x1="20" y1="140" x2="260" y2="140" stroke="rgba(201,169,110,0.12)" stroke-width="0.5"/>
+    <line x1="55" y1="55" x2="225" y2="225" stroke="rgba(201,169,110,0.07)" stroke-width="0.5"/>
+    <line x1="225" y1="55" x2="55" y2="225" stroke="rgba(201,169,110,0.07)" stroke-width="0.5"/>
+    <ellipse cx="140" cy="140" rx="26" ry="70" fill="none" stroke="#c9a96e" stroke-width="0.8"/>
+    <ellipse cx="140" cy="140" rx="70" ry="26" fill="none" stroke="#c9a96e" stroke-width="0.8"/>
+    <circle cx="140" cy="140" r="5" fill="#c9a96e"/>
+    <circle cx="140" cy="140" r="11" fill="none" stroke="#c9a96e" stroke-width="0.8"/>
+    <circle cx="140" cy="70" r="2.5" fill="rgba(201,169,110,0.6)"/>
+    <circle cx="140" cy="210" r="2.5" fill="rgba(201,169,110,0.6)"/>
+    <circle cx="70" cy="140" r="2.5" fill="rgba(201,169,110,0.6)"/>
+    <circle cx="210" cy="140" r="2.5" fill="rgba(201,169,110,0.6)"/>
+    <text x="140" y="150" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="18" font-weight="300" fill="#c9a96e" letter-spacing="7">T I</text>
+  </svg>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <p class="footer-brand">The Internal</p>
+      <p class="footer-brand-sub">by Amallitaah</p>
+      <p class="footer-tagline">A portal for women who have stopped becoming and are ready to simply be — at their most elevated, most powerful, most interior self.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Explore</p>
+      <a class="footer-link">Manifesto</a>
+      <a class="footer-link">The Edit</a>
+      <a class="footer-link">Recommendations</a>
+      <a class="footer-link">Hobbies</a>
+      <a class="footer-link">Nutrition</a>
+    </div>
+    <div>
+      <p class="footer-col-title">Connect</p>
+      <a class="footer-link">TikTok</a>
+      <a class="footer-link">Pinterest</a>
+      <a class="footer-link">YouTube</a>
+      <a class="footer-link">Substack</a>
+    </div>
+    <div>
+      <p class="footer-col-title">Community</p>
+      <a class="footer-link">Join the circle</a>
+      <a class="footer-link">Newsletter</a>
+      <a class="footer-link">Collaborate</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 The Internal. All rights reserved.</span>
+    <span class="footer-copy">Designed for the woman who already knows.</span>
+  </div>
+</footer>
+
+</body>
+</html>
