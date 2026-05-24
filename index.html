@@ -220,7 +220,49 @@ footer{padding:60px 60px 0;}
 .sfill{position:absolute;top:0;left:-100%;width:100%;height:100%;background:rgba(201,169,110,0.55);animation:sweep 3.5s ease-in-out infinite 2.8s;}
 @keyframes sweep{0%{left:-100%;}50%{left:0;}100%{left:100%;}}
 .slabel{font-size:8px;letter-spacing:5px;text-transform:uppercase;color:rgba(138,122,96,0.35);}
-@keyframes up{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}</style>
+@keyframes up{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}/* PILLARS V2 */
+.pillars{position:relative;padding:140px 7vw 160px;overflow:hidden;}
+.pillars-bg{position:absolute;inset:0;pointer-events:none;z-index:0;}
+.pb1{position:absolute;width:70vw;height:70vw;border-radius:50%;background:radial-gradient(circle,rgba(15,42,18,0.45) 0%,transparent 70%);top:-25%;left:-15%;filter:blur(90px);animation:amb 22s ease-in-out infinite;}
+.pb2{position:absolute;width:45vw;height:45vw;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.025) 0%,transparent 70%);bottom:-15%;right:-5%;filter:blur(70px);animation:amb 30s ease-in-out infinite reverse;}
+@keyframes amb{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(2%,3%) scale(1.04);}}
+.pillars-header{position:relative;z-index:2;margin-bottom:100px;display:flex;justify-content:space-between;align-items:flex-end;}
+.header-left{max-width:560px;}
+.p-tag{font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(201,169,110,0.55);display:flex;align-items:center;gap:14px;margin-bottom:28px;}
+.p-tag::before{content:'';width:30px;height:0.5px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.45));}
+.p-title{font-family:'Cormorant Garamond',serif;font-size:clamp(46px,5vw,68px);font-weight:300;line-height:1.0;color:#e8dcc8;}
+.p-title em{font-style:italic;color:#c9a96e;}
+.header-right{font-size:12px;line-height:2;color:rgba(184,168,138,0.4);font-weight:300;max-width:300px;text-align:right;padding-bottom:6px;}
+.pillars-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:1.5px;}
+.p-card{position:relative;padding:72px 64px 80px;background:linear-gradient(150deg,#0c1d0e 0%,#070d08 100%);border:0.5px solid rgba(201,169,110,0.07);cursor:pointer;overflow:hidden;transition:border-color 1s ease;display:flex;flex-direction:column;min-height:420px;}
+.p-card::before{content:'';position:absolute;inset:0;background:linear-gradient(150deg,rgba(201,169,110,0.022) 0%,transparent 55%);opacity:0;transition:opacity 1.4s ease;}
+.p-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0.5px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.18),transparent);transform:scaleX(0);transition:transform 1.2s ease;}
+.p-card:hover{border-color:rgba(201,169,110,0.15);}
+.p-card:hover::before{opacity:1;}
+.p-card:hover::after{transform:scaleX(1);}
+.p-card.featured{background:linear-gradient(150deg,#0e2210 0%,#070d08 65%);border-color:rgba(201,169,110,0.1);}
+.card-glow{position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.035),transparent 70%);top:-80px;right:-80px;opacity:0;transition:opacity 1.6s ease;pointer-events:none;}
+.p-card:hover .card-glow{opacity:1;}
+.card-num{font-family:'Cormorant Garamond',serif;font-size:120px;font-weight:300;color:rgba(201,169,110,0.04);line-height:1;position:absolute;bottom:40px;right:40px;transition:color 1s ease;user-select:none;pointer-events:none;}
+.p-card:hover .card-num{color:rgba(201,169,110,0.07);}
+.card-symbol{width:40px;height:40px;border:0.5px solid rgba(201,169,110,0.18);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:48px;transition:border-color 1s ease,background 1s ease;flex-shrink:0;}
+.card-symbol span{font-size:15px;color:rgba(201,169,110,0.45);transition:color 1s ease;}
+.p-card:hover .card-symbol{border-color:rgba(201,169,110,0.38);background:rgba(201,169,110,0.035);}
+.p-card:hover .card-symbol span{color:rgba(201,169,110,0.75);}
+.card-label{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,169,110,0.38);margin-bottom:20px;transition:color 0.8s ease;}
+.p-card:hover .card-label{color:rgba(201,169,110,0.62);}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#e0d4bc;line-height:1.15;margin-bottom:28px;transition:color 0.8s ease;}
+.p-card:hover .card-title{color:#ede3cc;}
+.card-body{font-size:12.5px;line-height:2.1;color:rgba(184,168,138,0.38);font-weight:300;max-width:400px;transition:color 1s ease;}
+.p-card:hover .card-body{color:rgba(184,168,138,0.6);}
+.featured-quote{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(201,169,110,0.2);line-height:1.8;margin-top:48px;padding-top:40px;border-top:0.5px solid rgba(201,169,110,0.07);transition:color 1s ease;max-width:460px;}
+.p-card:hover .featured-quote{color:rgba(201,169,110,0.38);}
+.card-arrow{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:52px;opacity:0;transform:translateY(8px);transition:opacity 1s ease,transform 1s ease;}
+.p-card:hover .card-arrow{opacity:1;transform:translateY(0);}
+.arrow-line{width:32px;height:0.5px;background:rgba(201,169,110,0.35);transition:width 0.8s ease;}
+.p-card:hover .arrow-line{width:48px;}
+.arrow-text{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(201,169,110,0.45);}
+.section-divider{width:100%;height:0.5px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.07),transparent);}</style>
 </head>
 <script>
 // Particles
@@ -361,35 +403,67 @@ document.addEventListener('mousemove',e=>{tx=(e.clientX/window.innerWidth-0.5);t
 </section>
 
 <!-- PILLARS -->
-<section>
-  <div class="section-tag">The four pillars</div>
-  <h2 class="section-title">What <em>lives</em> here</h2>
-  <div class="pillars-grid">
-    <div class="pillar-card">
-      <div class="pillar-num">01</div>
-      <p class="pillar-title">The Psychology</p>
-      <p class="pillar-body">Deep dives into your inner world — attachment theory, shadow work, archetypes, and the science of becoming. No academic jargon. Just honest and deep.</p>
-      <span class="pillar-arrow">→</span>
-    </div>
-    <div class="pillar-card">
-      <div class="pillar-num">02</div>
-      <p class="pillar-title">The Lifestyle</p>
-      <p class="pillar-body">What your highest self reads, wears, drinks, and surrounds herself with. Curated for the woman who sees luxury as an inside job.</p>
-      <span class="pillar-arrow">→</span>
-    </div>
-    <div class="pillar-card">
-      <div class="pillar-num">03</div>
-      <p class="pillar-title">The Practice</p>
-      <p class="pillar-body">Rituals, hobbies, and habits that align your outer world with your inner frequency. Start small. Go deep.</p>
-      <span class="pillar-arrow">→</span>
-    </div>
-    <div class="pillar-card">
-      <div class="pillar-num">04</div>
-      <p class="pillar-title">The Community</p>
-      <p class="pillar-body">A closed circle of women walking the same path. No noise. Just depth, support, and shared ascent.</p>
-      <span class="pillar-arrow">→</span>
-    </div>
+<!-- PILLARS -->
+<section class="pillars">
+  <div class="pillars-bg">
+    <div class="pb1"></div>
+    <div class="pb2"></div>
   </div>
+  <div class="section-divider"></div>
+
+  <div class="pillars-header">
+    <div class="header-left">
+      <div class="p-tag">The four pillars</div>
+      <h2 class="p-title">What <em>lives</em> here</h2>
+    </div>
+    <p class="header-right">Four dimensions of the same interior world. Each one a door. Each one a deeper layer.</p>
+  </div>
+
+  <div class="pillars-grid">
+
+    <div class="p-card featured">
+      <div class="card-glow"></div>
+      <div class="card-num">01</div>
+      <div class="card-symbol"><span>◈</span></div>
+      <div class="card-label">The first chamber</div>
+      <h3 class="card-title">The Psychology</h3>
+      <p class="card-body">Deep dives into your inner world — attachment theory, shadow work, archetypes, and the science of becoming. No academic jargon. Just honest, deep, and entirely yours.</p>
+      <p class="featured-quote">"The most sophisticated thing you can do is understand yourself."</p>
+      <div class="card-arrow"><div class="arrow-line"></div><span class="arrow-text">Enter</span></div>
+    </div>
+
+    <div class="p-card">
+      <div class="card-glow"></div>
+      <div class="card-num">02</div>
+      <div class="card-symbol"><span>◇</span></div>
+      <div class="card-label">The second chamber</div>
+      <h3 class="card-title">The Lifestyle</h3>
+      <p class="card-body">What your highest self reads, wears, drinks, and surrounds herself with. Curated for the woman who sees luxury as an inside job — not something you earn, but something you already are.</p>
+      <div class="card-arrow"><div class="arrow-line"></div><span class="arrow-text">Enter</span></div>
+    </div>
+
+    <div class="p-card">
+      <div class="card-glow"></div>
+      <div class="card-num">03</div>
+      <div class="card-symbol"><span>◎</span></div>
+      <div class="card-label">The third chamber</div>
+      <h3 class="card-title">The Practice</h3>
+      <p class="card-body">Rituals, hobbies, and habits that align your outer world with your inner frequency. Movement, nourishment, solitude, depth. Start small. Go deep. Come home to yourself.</p>
+      <div class="card-arrow"><div class="arrow-line"></div><span class="arrow-text">Enter</span></div>
+    </div>
+
+    <div class="p-card">
+      <div class="card-glow"></div>
+      <div class="card-num">04</div>
+      <div class="card-symbol"><span>○</span></div>
+      <div class="card-label">The fourth chamber</div>
+      <h3 class="card-title">The Community</h3>
+      <p class="card-body">A closed circle of women walking the same path. No noise. No performance. Just depth, real support, and the quiet power of shared ascent.</p>
+      <div class="card-arrow"><div class="arrow-line"></div><span class="arrow-text">Enter</span></div>
+    </div>
+
+  </div>
+  <div class="section-divider" style="margin-top:1.5px;"></div>
 </section>
 
 <!-- SHOP -->
