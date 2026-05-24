@@ -173,9 +173,84 @@ footer{padding:60px 60px 0;}
   .community-title{font-size:40px;}
   footer{padding:60px 24px 0;}
 }
-</style>
+/* HERO V3 */
+.hero{position:relative;width:100%;min-height:100vh;display:flex;align-items:center;padding:0 7vw;overflow:hidden;}
+.atm{position:absolute;inset:-20%;pointer-events:none;will-change:transform;}
+.atm-1{background:radial-gradient(ellipse 75% 65% at 58% 46%,#183a1d 0%,#050d06 60%);z-index:0;}
+.atm-2{background:radial-gradient(ellipse 55% 55% at 15% 70%,rgba(10,28,13,0.85) 0%,transparent 65%);z-index:1;}
+.atm-3{background:radial-gradient(ellipse 45% 45% at 80% 20%,rgba(201,169,110,0.025) 0%,transparent 60%);z-index:2;}
+.fog{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden;}
+.fog-blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:0;animation:fogDrift ease-in-out infinite;}
+.fog-blob:nth-child(1){width:40vw;height:40vw;left:30%;top:20%;background:radial-gradient(circle,rgba(18,50,22,0.18),transparent 70%);animation-duration:22s;animation-delay:0s;}
+.fog-blob:nth-child(2){width:30vw;height:30vw;left:55%;top:50%;background:radial-gradient(circle,rgba(12,35,16,0.14),transparent 70%);animation-duration:30s;animation-delay:8s;}
+.fog-blob:nth-child(3){width:25vw;height:25vw;left:10%;top:30%;background:radial-gradient(circle,rgba(201,169,110,0.018),transparent 70%);animation-duration:26s;animation-delay:14s;}
+@keyframes fogDrift{0%{opacity:0;transform:translate(0,0) scale(1);}25%{opacity:1;}50%{transform:translate(2%,1.5%) scale(1.04);}75%{opacity:0.6;}100%{opacity:0;transform:translate(-1%,2%) scale(0.98);}}
+.vlines{position:absolute;inset:0;z-index:3;pointer-events:none;}
+.vl{position:absolute;top:0;bottom:0;width:0.5px;background:linear-gradient(to bottom,transparent 0%,rgba(201,169,110,0.03) 25%,rgba(201,169,110,0.055) 50%,rgba(201,169,110,0.03) 75%,transparent 100%);animation:vlBreathe ease-in-out infinite;}
+.vl:nth-child(1){left:33%;animation-duration:11s;animation-delay:0s;}
+.vl:nth-child(2){left:67%;animation-duration:15s;animation-delay:4s;}
+@keyframes vlBreathe{0%,100%{opacity:0;}50%{opacity:1;}}
+.orb-wrap{position:absolute;right:4%;top:50%;transform:translateY(-50%);width:min(44vw,500px);height:min(44vw,500px);z-index:5;will-change:transform;}
+.orb-ring{position:absolute;border-radius:50%;}
+.orb-r1{inset:0;background:radial-gradient(circle at 36% 30%,rgba(28,62,33,0.22) 0%,rgba(10,25,12,0.38) 45%,transparent 75%);border:0.5px solid rgba(201,169,110,0.09);filter:blur(0.5px);animation:slowSpin 60s linear infinite;}
+.orb-r2{inset:35px;border:0.5px solid rgba(201,169,110,0.05);background:radial-gradient(circle at 62% 66%,rgba(201,169,110,0.015),transparent 55%);animation:slowSpin 90s linear infinite reverse;}
+.orb-r3{inset:85px;border:0.5px solid rgba(201,169,110,0.03);animation:slowSpin 120s linear infinite;}
+.orb-sheen{position:absolute;inset:0;border-radius:50%;background:linear-gradient(140deg,rgba(255,255,255,0.025) 0%,transparent 45%);pointer-events:none;}
+.orb-center{position:absolute;inset:130px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.orb-glyph{font-family:'Cormorant Garamond',serif;font-size:64px;font-style:italic;color:rgba(201,169,110,0.055);animation:glyphBreathe 10s ease-in-out infinite;user-select:none;}
+@keyframes slowSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes glyphBreathe{0%,100%{opacity:0.055;}50%{opacity:0.11;}}
+.glass-veil{position:absolute;inset:0;z-index:6;pointer-events:none;background:linear-gradient(160deg,rgba(255,255,255,0.006) 0%,transparent 40%),linear-gradient(to bottom,rgba(5,13,6,0.15) 0%,transparent 25%,transparent 75%,rgba(5,13,6,0.35) 100%);}
+.vignette-hero{position:absolute;inset:0;z-index:7;pointer-events:none;background:radial-gradient(ellipse at center,transparent 30%,rgba(3,8,4,0.55) 100%);}
+.cm{position:absolute;width:28px;height:28px;z-index:10;pointer-events:none;opacity:0;animation:cmIn 1s ease forwards;}
+.cm-tl{top:32px;left:32px;border-top:0.5px solid rgba(201,169,110,0.2);border-left:0.5px solid rgba(201,169,110,0.2);animation-delay:2s;}
+.cm-tr{top:32px;right:32px;border-top:0.5px solid rgba(201,169,110,0.2);border-right:0.5px solid rgba(201,169,110,0.2);animation-delay:2.2s;}
+.cm-bl{bottom:32px;left:32px;border-bottom:0.5px solid rgba(201,169,110,0.2);border-left:0.5px solid rgba(201,169,110,0.2);animation-delay:2.4s;}
+.cm-br{bottom:32px;right:32px;border-bottom:0.5px solid rgba(201,169,110,0.2);border-right:0.5px solid rgba(201,169,110,0.2);animation-delay:2.6s;}
+@keyframes cmIn{to{opacity:1;}}
+.eyebrow-hero{font-size:9px;letter-spacing:7px;text-transform:uppercase;color:rgba(201,169,110,0.65);display:flex;align-items:center;gap:16px;margin-bottom:38px;opacity:0;animation:up 2s cubic-bezier(0.16,1,0.3,1) forwards 0.5s;}
+.eyebrow-hero::before{content:'';width:32px;height:0.5px;flex-shrink:0;background:linear-gradient(to right,transparent,rgba(201,169,110,0.5));}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(60px,6.8vw,96px);font-weight:300;line-height:0.91;color:#e8dcc8;opacity:0;animation:up 2.2s cubic-bezier(0.16,1,0.3,1) forwards 0.7s;}
+.hero-title em{font-style:italic;color:#c9a96e;display:block;}
+.hero-sub{font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(184,168,138,0.3);margin:26px 0 42px;opacity:0;animation:up 2.2s cubic-bezier(0.16,1,0.3,1) forwards 1s;}
+.hero-desc{font-size:13.5px;line-height:2.15;color:rgba(200,188,168,0.72);max-width:370px;font-weight:300;margin-bottom:54px;opacity:0;animation:up 2.2s cubic-bezier(0.16,1,0.3,1) forwards 1.2s;}
+.hero-btns{display:flex;align-items:center;gap:32px;opacity:0;animation:up 2.2s cubic-bezier(0.16,1,0.3,1) forwards 1.4s;}
+.hero-scroll-bar{position:absolute;bottom:34px;left:7vw;z-index:10;display:flex;align-items:center;gap:14px;opacity:0;animation:up 2s ease forwards 2.2s;}
+.strack{width:48px;height:0.5px;background:rgba(201,169,110,0.12);position:relative;overflow:hidden;}
+.sfill{position:absolute;top:0;left:-100%;width:100%;height:100%;background:rgba(201,169,110,0.55);animation:sweep 3.5s ease-in-out infinite 2.8s;}
+@keyframes sweep{0%{left:-100%;}50%{left:0;}100%{left:100%;}}
+.slabel{font-size:8px;letter-spacing:5px;text-transform:uppercase;color:rgba(138,122,96,0.35);}
+@keyframes up{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}</style>
 </head>
-<body>
+<script>
+// Particles
+const pts=document.getElementById('pts');
+if(pts){
+  for(let i=0;i<10;i++){
+    const p=document.createElement('div');
+    p.className='pt';
+    p.style.cssText=`position:absolute;bottom:0;border-radius:50%;background:#c9a96e;opacity:0;animation:ptRise linear infinite;left:${Math.random()*100}%;width:${Math.random()*1.2+0.4}px;height:${Math.random()*1.2+0.4}px;animation-duration:${Math.random()*22+20}s;animation-delay:${Math.random()*18}s;`;
+    pts.appendChild(p);
+  }
+}
+// Add ptRise keyframe
+const s=document.createElement('style');
+s.textContent='@keyframes ptRise{0%{opacity:0;transform:translateY(0);}12%{opacity:0.35;}88%{opacity:0.12;}100%{opacity:0;transform:translateY(-85vh) translateX(8px);}}';
+document.head.appendChild(s);
+
+// Micro parallax
+let tx=0,ty=0,cx=0,cy=0;
+const a1=document.getElementById('a1'),a2=document.getElementById('a2'),a3=document.getElementById('a3'),orb=document.getElementById('orb');
+document.addEventListener('mousemove',e=>{tx=(e.clientX/window.innerWidth-0.5);ty=(e.clientY/window.innerHeight-0.5);});
+(function tick(){
+  cx+=(tx-cx)*0.025;cy+=(ty-cy)*0.025;
+  if(a1)a1.style.transform=`translate(${cx*5}px,${cy*4}px)`;
+  if(a2)a2.style.transform=`translate(${cx*10}px,${cy*8}px)`;
+  if(a3)a3.style.transform=`translate(${cx*16}px,${cy*12}px)`;
+  if(orb)orb.style.transform=`translateY(calc(-50% + ${cy*7}px)) translateX(${cx*5}px)`;
+  requestAnimationFrame(tick);
+})();
+</script><body>
 
 <!-- NAV -->
 <nav>
@@ -193,23 +268,57 @@ footer{padding:60px 60px 0;}
 </nav>
 
 <!-- HERO -->
-<section class="hero" style="padding:0 60px;border:none;">
-  <div class="hero-bg"></div>
-  <div class="hero-orb"><div class="hero-orb-inner"><span class="hero-orb-symbol">∞</span></div></div>
+<<section class="hero" style="border:none;">
+
+  <div class="atm atm-1" id="a1"></div>
+  <div class="atm atm-2" id="a2"></div>
+  <div class="atm atm-3" id="a3"></div>
+
+  <div class="fog">
+    <div class="fog-blob"></div>
+    <div class="fog-blob"></div>
+    <div class="fog-blob"></div>
+  </div>
+
+  <div class="vlines">
+    <div class="vl"></div>
+    <div class="vl"></div>
+  </div>
+
+  <div class="particles" id="pts"></div>
+
+  <div class="orb-wrap" id="orb">
+    <div class="orb-ring orb-r1"></div>
+    <div class="orb-ring orb-r2"></div>
+    <div class="orb-ring orb-r3"></div>
+    <div class="orb-sheen"></div>
+    <div class="orb-center"><span class="orb-glyph">∞</span></div>
+  </div>
+
+  <div class="glass-veil"></div>
+  <div class="vignette-hero"></div>
+
+  <div class="cm cm-tl"></div>
+  <div class="cm cm-tr"></div>
+  <div class="cm cm-bl"></div>
+  <div class="cm cm-br"></div>
+
   <div class="hero-content">
-    <div class="eyebrow">Psychology & Elevation</div>
-    <h1 class="hero-title">The<br><em>Internal</em><br>World</h1>
-    <p class="hero-sub">Your highest self <isindex> been waiting.</p>
+    <div class="eyebrow-hero">Psychology & Elevation</div>
+    <h1 class="hero-title">The<br><em>Internal</em>World</h1>
+    <p class="hero-sub">Your highest self has been waiting.</p>
     <p class="hero-desc">You've felt it for a while now. That there's more. That you are more. This is where you come to find out.</p>
     <div class="hero-btns">
       <div class="btn-primary">Enter the world</div>
       <div class="btn-ghost">Explore the edit →</div>
     </div>
   </div>
-  <div class="hero-scroll">
-    <div class="hero-scroll-line"></div>
-    <span class="hero-scroll-text">Scroll to descend</span>
+
+  <div class="hero-scroll-bar">
+    <div class="strack"><div class="sfill"></div></div>
+    <span class="slabel">Scroll to descend</span>
   </div>
+
 </section>
 
 <!-- MARQUEE -->
