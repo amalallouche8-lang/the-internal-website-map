@@ -262,7 +262,47 @@ footer{padding:60px 60px 0;}
 .arrow-line{width:32px;height:0.5px;background:rgba(201,169,110,0.35);transition:width 0.8s ease;}
 .p-card:hover .arrow-line{width:48px;}
 .arrow-text{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(201,169,110,0.45);}
-.section-divider{width:100%;height:0.5px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.07),transparent);}</style>
+.section-divider{width:100%;height:0.5px;background:linear-gradient(to right,transparent,rgba(201,169,110,0.07),transparent);}/* INTRO */
+#intro{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;flex-direction:column;background:#040a05;pointer-events:all;transition:opacity 2.4s cubic-bezier(0.16,1,0.3,1);}
+#intro.fade-out{opacity:0;pointer-events:none;}
+.fog-layer{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;animation:fogFloat ease-in-out infinite;}
+.fog-1{width:70vw;height:70vw;background:radial-gradient(circle,rgba(14,38,17,0.5) 0%,transparent 70%);top:-20%;left:-15%;animation-duration:25s;animation-delay:0s;}
+.fog-2{width:50vw;height:50vw;background:radial-gradient(circle,rgba(10,28,13,0.4) 0%,transparent 70%);bottom:-15%;right:-10%;animation-duration:32s;animation-delay:8s;}
+.fog-3{width:35vw;height:35vw;background:radial-gradient(circle,rgba(201,169,110,0.018) 0%,transparent 70%);top:30%;left:40%;animation-duration:20s;animation-delay:4s;}
+@keyframes fogFloat{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(1.5%,2%) scale(1.03);}66%{transform:translate(-1%,1%) scale(0.97);}}
+#intro-particles{position:absolute;inset:0;pointer-events:none;}
+.ipt{position:absolute;border-radius:50%;background:#c9a96e;opacity:0;animation:iptRise linear infinite;}
+@keyframes iptRise{0%{opacity:0;transform:translateY(0) translateX(0);}10%{opacity:0.4;}90%{opacity:0.15;}100%{opacity:0;transform:translateY(-100vh) translateX(8px);}}
+.intro-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 25%,rgba(2,6,3,0.7) 100%);pointer-events:none;}
+.intro-center{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;}
+.portal-wrap{position:relative;width:180px;height:180px;display:flex;align-items:center;justify-content:center;margin-bottom:52px;opacity:0;animation:portalReveal 3s cubic-bezier(0.16,1,0.3,1) forwards 0.8s;}
+@keyframes portalReveal{from{opacity:0;transform:scale(0.85);}to{opacity:1;transform:scale(1);}}
+.portal-ring{position:absolute;border-radius:50%;border:0.5px solid rgba(201,169,110,0.15);animation:portalSpin linear infinite;}
+.pr1{inset:0;animation-duration:80s;border-color:rgba(201,169,110,0.12);}
+.pr2{inset:18px;animation-duration:55s;animation-direction:reverse;border-color:rgba(201,169,110,0.08);}
+.pr3{inset:36px;animation-duration:110s;border-color:rgba(201,169,110,0.05);}
+.pr4{inset:54px;animation-duration:70s;animation-direction:reverse;border-color:rgba(201,169,110,0.06);}
+@keyframes portalSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.portal-glow{position:absolute;inset:-20px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,0.04) 0%,rgba(14,38,17,0.06) 40%,transparent 70%);animation:portalBreathe 6s ease-in-out infinite;}
+@keyframes portalBreathe{0%,100%{transform:scale(1);opacity:0.6;}50%{transform:scale(1.08);opacity:1;}}
+.portal-symbol{position:relative;z-index:2;width:56px;height:56px;display:flex;align-items:center;justify-content:center;}
+.portal-inner-ring{position:absolute;inset:0;border-radius:50%;border:0.5px solid rgba(201,169,110,0.25);animation:portalBreathe 6s ease-in-out infinite;}
+.portal-dot{width:5px;height:5px;border-radius:50%;background:rgba(201,169,110,0.5);animation:portalBreathe 6s ease-in-out infinite;}
+.portal-cross{position:absolute;inset:0;}
+.portal-cross::before,.portal-cross::after{content:'';position:absolute;background:rgba(201,169,110,0.12);}
+.portal-cross::before{width:0.5px;height:100%;left:50%;transform:translateX(-50%);}
+.portal-cross::after{height:0.5px;width:100%;top:50%;transform:translateY(-50%);}
+.intro-brand{opacity:0;animation:textReveal 2.5s cubic-bezier(0.16,1,0.3,1) forwards 2s;text-align:center;margin-bottom:20px;}
+@keyframes textReveal{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.brand-name{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:300;letter-spacing:12px;text-transform:uppercase;color:rgba(201,169,110,0.7);margin-bottom:4px;}
+.brand-by{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,169,110,0.3);}
+.intro-tagline{opacity:0;animation:textReveal 2.5s cubic-bezier(0.16,1,0.3,1) forwards 2.6s;text-align:center;margin-bottom:60px;}
+.tagline-text{font-family:'Cormorant Garamond',serif;font-size:11px;font-style:italic;letter-spacing:6px;text-transform:uppercase;color:rgba(184,168,138,0.3);}
+.intro-enter{opacity:0;animation:textReveal 2s cubic-bezier(0.16,1,0.3,1) forwards 3.4s;display:flex;flex-direction:column;align-items:center;gap:14px;cursor:pointer;}
+.enter-line{width:0.5px;height:40px;background:linear-gradient(to bottom,rgba(201,169,110,0.4),transparent);animation:lineGrow 2s ease forwards 4s;transform-origin:top;transform:scaleY(0);}
+@keyframes lineGrow{to{transform:scaleY(1);}}
+.enter-label{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:6px;text-transform:uppercase;color:rgba(201,169,110,0.4);transition:color 0.6s ease,letter-spacing 0.6s ease;}
+.intro-enter:hover .enter-label{color:rgba(201,169,110,0.75);letter-spacing:8px;}</style>
 </head>
 <script>
 // Particles
@@ -294,7 +334,45 @@ document.addEventListener('mousemove',e=>{tx=(e.clientX/window.innerWidth-0.5);t
 })();
 </script><body>
 
-<!-- NAV -->
+<!-- NAV --><!-- INTRO -->
+<div id="intro">
+  <div class="fog-layer fog-1"></div>
+  <div class="fog-layer fog-2"></div>
+  <div class="fog-layer fog-3"></div>
+  <div id="intro-particles"></div>
+  <div class="intro-vignette"></div>
+
+  <div class="intro-center">
+
+    <div class="portal-wrap">
+      <div class="portal-ring pr1"></div>
+      <div class="portal-ring pr2"></div>
+      <div class="portal-ring pr3"></div>
+      <div class="portal-ring pr4"></div>
+      <div class="portal-glow"></div>
+      <div class="portal-symbol">
+        <div class="portal-cross"></div>
+        <div class="portal-inner-ring"></div>
+        <div class="portal-dot"></div>
+      </div>
+    </div>
+
+    <div class="intro-brand">
+      <p class="brand-name">The Internal</p>
+      <p class="brand-by">by Amallitaah</p>
+    </div>
+
+    <div class="intro-tagline">
+      <p class="tagline-text">Enter the inner world</p>
+    </div>
+
+    <div class="intro-enter" id="enterBtn">
+      <div class="enter-line"></div>
+      <span class="enter-label">Enter</span>
+    </div>
+
+  </div>
+</div>
 <nav>
   <div class="nav-logo">
     The Internal
@@ -695,5 +773,27 @@ document.addEventListener('mousemove',e=>{tx=(e.clientX/window.innerWidth-0.5);t
   </div>
 </footer>
 
-</body>
+<script>
+// Intro particles
+const ic=document.getElementById('intro-particles');
+if(ic){
+  for(let i=0;i<14;i++){
+    const p=document.createElement('div');
+    p.className='ipt';
+    p.style.cssText=`left:${Math.random()*100}%;bottom:0;width:${Math.random()*1.2+0.3}px;height:${Math.random()*1.2+0.3}px;animation-duration:${Math.random()*25+20}s;animation-delay:${Math.random()*20}s;`;
+    ic.appendChild(p);
+  }
+}
+// Enter button
+const enterBtn=document.getElementById('enterBtn');
+const intro=document.getElementById('intro');
+function dismissIntro(){
+  if(intro&&!intro.classList.contains('fade-out')){
+    intro.classList.add('fade-out');
+    setTimeout(()=>{intro.style.display='none';},2400);
+  }
+}
+if(enterBtn) enterBtn.addEventListener('click',dismissIntro);
+setTimeout(dismissIntro,5000)
+</script></body>
 </html>
